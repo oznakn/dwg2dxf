@@ -1,0 +1,33 @@
+{
+    "name": "@filemap/dwg2dxf",
+    "version": "0.1.0",
+    "description": "dwg to dxf converter for Node.JS",
+    "author": "FileMap",
+    "license": "MIT",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "gypfile": true,
+    "engines": {
+        "node": "^18.0.0 || ^17.0.0 || ^16.0.0"
+    },
+    "os": [
+        "darwin",
+        "win32"
+    ],
+    "scripts": {
+        "install": "echo",
+        "build": "zx scripts/build.mjs",
+        "test": "node scripts/test.mjs"
+    },
+    "dependencies": {
+        "nan": "^2.14.0",
+        "node-addon-api": "^4.0.0",
+        "node-gyp-build": "^4.2.3"
+    },
+    "devDependencies": {
+        "node-gyp": "^9.1.0",
+        "prebuildify": "^4.2.0",
+        "rimraf": "^3.0.2",
+        "zx": "^7.1.1"
+    }
+}
