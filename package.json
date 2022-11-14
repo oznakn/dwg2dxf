@@ -16,7 +16,7 @@
     ],
     "scripts": {
         "install": "echo",
-        "build": "yarn prebuildify --strip --napi",
+        "build": "zx scripts/build.mjs",
         "test": "node test.js",
         "clean": "rimraf libdxfrw build"
     },
@@ -28,6 +28,7 @@
     "devDependencies": {
         "node-gyp": "^9.1.0",
         "prebuildify": "^4.2.0",
-        "rimraf": "^3.0.2"
+        "rimraf": "^3.0.2",
+        "zx": "^7.1.1"
     }
 }
