@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+project(dwg2dwf)
+
+add_definitions(-Wall)
+include_directories(../src)
+
+include(GNUInstallDirs)
+
+link_directories(./)
+link_directories(/usr/local/Cellar/libiconv/1.17/lib)
+
+add_executable(dwg2dxf dx_iface.cpp main.cpp dx_iface.h dx_data.h)
+target_link_libraries(dwg2dxf iconv)
+target_link_libraries(dwg2dxf dxfrw)
+
+install(TARGETS dwg2dxf DESTINATION "${CMAKE_INSTALL_BINDIR}")
+install(FILES dwg2dxf.1 DESTINATION "${CMAKE_INSTALL_MANDIR}/man1")
