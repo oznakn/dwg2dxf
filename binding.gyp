@@ -3,11 +3,15 @@
     {
       "target_name": "dwg2dxf",
       "sources": [
-        "src/dwg2dxf.cc"
+        "src/dwg2dxf.cc",
+        "<!@(node -p \"require('fs').readdirSync('./libdxfrw/src').map(f=>'libdxfrw/src/'+f).join(' ')\")",
+        "<!@(node -p \"require('fs').readdirSync('./libdxfrw/src/intern').map(f=>'libdxfrw/src/intern/'+f).join(' ')\")",
+        "<!@(node -p \"require('fs').readdirSync('./libdxfrw/dwg2dxf').filter(f => f !== 'main.cpp').map(f=>'libdxfrw/dwg2dxf/'+f).join(' ')\")",
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
         "libdxfrw/src",
+        "libdxfrw/src/intern",
         "libdxfrw/dwg2dxf",
       ],
       "dependencies": [
@@ -23,14 +27,9 @@
         [
           'OS=="mac"',
           {
-            "sources": [
-                "src/dwg2dxf.cc"
-            ],
             "link_settings": {
               "libraries": [
-                "-Wl,-rpath, .",
-                "-L<(module_root_dir)/libdxfrw/dwg2dxf/build",
-                "-ldwg2dxf",
+                "-Wl,-rpath, ."
               ]
             },
             "xcode_settings": {
@@ -46,9 +45,6 @@
         [
           'OS=="win"',
           {
-            "sources": [
-                "src/dwg2dxf.cc"
-            ],
             "msvs_settings": {
               "VCCLCompilerTool": {
                 "AdditionalOptions": ["/std:c++17"]
