@@ -4,15 +4,20 @@
       "target_name": "dwg2dxf",
       "sources": [
         "src/dwg2dxf.cc",
-        "<!@(node -p \"require('fs').readdirSync('./libdxfrw/src').map(f=>'libdxfrw/src/'+f).join(' ')\")",
-        "<!@(node -p \"require('fs').readdirSync('./libdxfrw/src/intern').map(f=>'libdxfrw/src/intern/'+f).join(' ')\")",
-        "<!@(node -p \"require('fs').readdirSync('./libdxfrw/dwg2dxf').filter(f => f !== 'main.cpp').map(f=>'libdxfrw/dwg2dxf/'+f).join(' ')\")",
+        "<!@(node -p \"require('fs').readdirSync('./libs/dxfrw/src').map(f=>'libs/dxfrw/src/'+f).join(' ')\")",
+        "<!@(node -p \"require('fs').readdirSync('./libs/dxfrw/src/intern').map(f=>'libs/dxfrw/src/intern/'+f).join(' ')\")",
+        "<!@(node -p \"require('fs').readdirSync('./libs/dxfrw/dwg2dxf').filter(f => f !== 'main.cpp').map(f=>'libs/dxfrw/dwg2dxf/'+f).join(' ')\")",
+        "libs/iconv/libiconv/lib/iconv.c",
+        "libs/iconv/libiconv/libcharset/lib/localcharset.c",
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
-        "libdxfrw/src",
-        "libdxfrw/src/intern",
-        "libdxfrw/dwg2dxf",
+        "libs/dxfrw/src",
+        "libs/dxfrw/src/intern",
+        "libs/dxfrw/dwg2dxf",
+        "libs/iconv/libiconv/lib",
+        "libs/iconv/libiconv/include",
+        "libs/iconv/include",
       ],
       "dependencies": [
         "<!(node -p \"require('node-addon-api').gyp\")"

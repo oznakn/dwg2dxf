@@ -18,7 +18,7 @@
         "install": "echo",
         "build": "zx scripts/build.mjs",
         "test": "node test.js",
-        "clean": "rimraf libdxfrw build"
+        "clean": "rimraf build libdxfrw libiconv"
     },
     "dependencies": {
         "nan": "^2.14.0",
@@ -26,6 +26,7 @@
         "node-gyp-build": "^4.2.3"
     },
     "devDependencies": {
+        "fs-extra": "^10.1.0",
         "node-gyp": "^9.1.0",
         "prebuildify": "^4.2.0",
         "rimraf": "^3.0.2",
