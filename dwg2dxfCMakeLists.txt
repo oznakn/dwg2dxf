@@ -7,7 +7,14 @@ include_directories(../src)
 include(GNUInstallDirs)
 
 link_directories(./)
-link_directories(/usr/local/Cellar/libiconv/1.17/lib)
+if(APPLE)
+    link_directories(/usr/local/opt/libiconv/lib)
+endif()
+
+if(WIN32)
+    include_directories(../vs2013/packages/libiconv.1.14.0.11/build/native/include)
+    link_directories(../vs2013/packages/libiconv.1.14.0.11/build/native/lib)
+endif()
 
 add_executable(dwg2dxf dx_iface.cpp main.cpp dx_iface.h dx_data.h)
 target_link_libraries(dwg2dxf iconv)
