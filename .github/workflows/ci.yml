@@ -1,0 +1,42 @@
+name: Build
+
+on:
+  - push
+
+jobs:
+  build:
+    name: Build for ${{ matrix.target.name }}
+    runs-on: ${{ matrix.target.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          [
+            { os: "windows-latest", name: "windows" },
+            { os: "macos-latest", name: "macos" },
+          ]
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: yarn
+
+      - run: yarn install --frozen-lockfile
+
+      - run: yarn build
+
+      - run: git pull
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: update build files [skip ci]
+          file_pattern: "prebuilds"

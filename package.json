@@ -8,7 +8,7 @@
     "types": "index.d.ts",
     "gypfile": true,
     "engines": {
-        "node": "^18.0.0 || ^17.0.0 || ^16.0.0"
+        "node": "^16.0.0"
     },
     "os": [
         "darwin",
@@ -16,7 +16,7 @@
     ],
     "scripts": {
         "install": "echo",
-        "build": "zx scripts/build.mjs",
+        "build": "yarn prebuildify --strip --napi",
         "test": "node test.js",
         "clean": "rimraf libdxfrw build"
     },
@@ -28,7 +28,6 @@
     "devDependencies": {
         "node-gyp": "^9.1.0",
         "prebuildify": "^4.2.0",
-        "rimraf": "^3.0.2",
-        "zx": "^7.1.1"
+        "rimraf": "^3.0.2"
     }
 }

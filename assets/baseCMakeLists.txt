@@ -1,4 +1,0 @@
-if(APPLE)
-    include_directories(/usr/local/opt/libiconv/include)
-    link_libraries(/usr/local/opt/libiconv/lib PRIVATE)
-endif()
