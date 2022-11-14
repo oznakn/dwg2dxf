@@ -17,7 +17,8 @@
     "scripts": {
         "install": "echo",
         "build": "zx scripts/build.mjs",
-        "test": "node scripts/test.mjs"
+        "test": "node test.js",
+        "clean": "rimraf libdxfrw build"
     },
     "dependencies": {
         "nan": "^2.14.0",
