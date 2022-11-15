@@ -7,17 +7,12 @@
         "<!@(node -p \"require('fs').readdirSync('./libs/dxfrw/src').map(f=>'libs/dxfrw/src/'+f).join(' ')\")",
         "<!@(node -p \"require('fs').readdirSync('./libs/dxfrw/src/intern').map(f=>'libs/dxfrw/src/intern/'+f).join(' ')\")",
         "<!@(node -p \"require('fs').readdirSync('./libs/dxfrw/dwg2dxf').filter(f => f !== 'main.cpp').map(f=>'libs/dxfrw/dwg2dxf/'+f).join(' ')\")",
-        "libs/iconv/libiconv/lib/iconv.c",
-        "libs/iconv/libiconv/libcharset/lib/localcharset.c",
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
         "libs/dxfrw/src",
         "libs/dxfrw/src/intern",
         "libs/dxfrw/dwg2dxf",
-        "libs/iconv/libiconv/lib",
-        "libs/iconv/libiconv/include",
-        "libs/iconv/include",
       ],
       "dependencies": [
         "<!(node -p \"require('node-addon-api').gyp\")"
@@ -50,6 +45,15 @@
         [
           'OS=="win"',
           {
+            "sources": [
+              "libs/iconv/libiconv/lib/iconv.c",
+              "libs/iconv/libiconv/libcharset/lib/localcharset.c",
+            ],
+            "include_dirs": [
+              "libs/iconv/libiconv/lib",
+              "libs/iconv/libiconv/include",
+              "libs/iconv/include",
+            ],
             "msvs_settings": {
               "VCCLCompilerTool": {
                 "AdditionalOptions": ["/std:c++17"]
